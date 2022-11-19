@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gaya.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Regression</title>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Rain Next-Day Prediction in Australia</h1>
+        <form action="{{ url_for('rainnextdayprediction') }}" method="POST">
+            <div class="form-group">
+                <label for="Location">Location</label>
+                <br><select class="form-control" id="Location" name="Location" required="required">
+                    <option>-- Choose a Location --</option>
+                    <option value="0">Bendigo</option>
+                    <option value="1">Moree</option>
+                    <option value="2">Wollongong</option>
+                    <option value="3">Ballarat</option>
+                    <option value="4">PearceRAAF</option>
+                    <option value="5">Mildura</option>
+                    <option value="6">MountGinini</option>
+                    <option value="7">AliceSprings</option>
+                    <option value="8">Albany</option>
+                    <option value="9">Townsville</option>
+                    <option value="10">Melbourne</option>
+                    <option value="11">Canberra</option>
+                    <option value="12">Sale</option>
+                    <option value="13">SydneyAirport</option>
+                    <option value="14">Brisbane</option>
+                    <option value="15">SalmonGums</option>
+                    <option value="16">MountGambier</option>
+                    <option value="17">Witchcliffe</option>
+                    <option value="18">Nuriootpa</option>
+                    <option value="19">Watsonia</option>
+                    <option value="20">Woomera</option>
+                    <option value="21">Williamtown</option>
+                    <option value="22">Walpole</option>
+                    <option value="23">Newcastle</option>
+                    <option value="24">Hobart</option>
+                    <option value="25">Sydney</option>
+                    <option value="26">PerthAirport</option>
+                    <option value="27">Launceston</option>
+                    <option value="28">Richmond</option>
+                    <option value="29">Perth</option>
+                    <option value="30">Penrith</option>
+                    <option value="31">Dartmoor</option>
+                    <option value="32">Darwin</option>
+                    <option value="33">CoffsHarbour</option>
+                    <option value="34">Cairns</option>
+                    <option value="35">Portland</option>
+                    <option value="36">Cobar</option>
+                    <option value="37">Tuggeranong</option>
+                    <option value="38">MelbourneAirport</option>
+                    <option value="39">NorfolkIsland</option>
+                    <option value="40">Nhil</option>
+                    <option value="41">Adelaide</option>
+                    <option value="42">NorahHead</option>
+                    <option value="43">WaggaWagga</option>
+                    <option value="44">Uluru</option>
+                    <option value="45">GoldCoast</option>
+                    <option value="46">Albury</option>
+                    <option value="47">BadgerysCreek</option>
+                    <option value="48">Katherine</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Season">Season</label>
+                <br><select class="form-control" id="Season" name="Season" required="required">
+                    <option>-- Choose a Pick-up Point --</option>
+                    <option value="0">Summer</option>
+                    <option value="1">Fall</option>
+                    <option value="2">Winter</option>
+                    <option value="3">Spring</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Rainfall">Rainfall Intensity (mm)</label>
+                <input type="number" class="form-control" id="formGroupExampleInput"
+                    placeholder="Input a number with a range of 0.0 - 41.59 " name="Rainfall">
+            </div>
+            <div class="form-group">
+                <label for="WindGustSpeed">Wind Speed (Mph)</label>
+                <input type="number" class="form-control" id="formGroupExampleInput"
+                    placeholder="Input a number with a range of 7.0 - 94.0 " name="WindGustSpeed">
+            </div>
+            <div class="form-group">
+                <label for="Average Temp">Temperature (°C)</label>
+                <input type="number" class="form-control" id="formGroupExampleInput"
+                    placeholder="Input a number with a range of 0.0 - 41.59 " name="Average Temp">
+            </div>
+            <div class="form-group">
+                <label for="Average Humidity">Humidity (%)</label>
+                <input type="number" class="form-control" id="formGroupExampleInput"
+                    placeholder="Input a number with a range of 0.0 - 100.0 " name="Average Humidity">
+            </div>
+            <div class="form-group">
+                <label for="RainToday">Is it a rainy day?</label>
+                <select class="form-control" id="RainToday" name="RainToday" required="required">
+                    <option>-- Choose a Condition --</option>
+                    <option value="0">No, it's not raining today</option>
+                    <option value="1">Yes, it's raining today</option>
+                </select>
+            </div>
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white font-weight-bold">
+                    Result of Weather Prediction
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ prediction_text }}</p>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-3 mb-5">
+                <div id="success"></div>
+                <button class="sim-btn hvr-bounce-to-top" type="submit">Predict</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
