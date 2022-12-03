@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gaya.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression</title>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Price Prediction for Uber/Lyft Services</h1>
+        <form action="{{ url_for('ridesharingcostprediction') }}" method="POST">
+            <div class="form-group">
+                <label for="cab_type">Transport Name</label>
+                <br><select class="form-control" id="cab_type" name="cab_type" required="required">
+                    <option>-- Choose a Transport Name --</option>
+                    <option value="0">Lyft</option>
+                    <option value="1">Uber</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Service Type</label>
+                <br><select class="form-control" id="name" name="name" required="required">
+                    <option>-- Choose a Service Type --</option>
+                    <option value="0">Uber XL</option>
+                    <option value="1">Uber WAV</option>
+                    <option value="2">Uber Black SUV</option>
+                    <option value="3">Uber Black</option>
+                    <option value="4">Uber X</option>
+                    <option value="5">Uber Pool</option>
+                    <option value="6">Uber Lux</option>
+                    <option value="7">Uber Taxi</option>
+                    <option value="8">Lyft Black XL</option>
+                    <option value="9">Lyft XL</option>
+                    <option value="10">Lyft Black</option>
+                    <option value="11">Lyft Shared</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="source">Pick-up Point</label>
+                    <br><select class="form-control" id="source" name="source" required="required">
+                        <option>-- Choose a Pick-up Point --</option>
+                        <option value="0">Financial District</option>
+                        <option value="1">Back Bay</option>
+                        <option value="2">Theatre District</option>
+                        <option value="3">Boston University</option>
+                        <option value="4">North End</option>
+                        <option value="5">Fenway</option>
+                        <option value="6">Northeastern University</option>
+                        <option value="7">South Station</option>
+                        <option value="8">Haymarket Square</option>
+                        <option value="9">West End</option>
+                        <option value="10">Beacon Hill</option>
+                        <option value="11">North Station</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="destination">Drop Point</label>
+                    <br><select class="form-control" id="destination" name="destination" required="required">
+                        <option>-- Choose a Drop Point --</option>
+                        <option value="0">Financial District</option>
+                        <option value="1">Back Bay</option>
+                        <option value="2">Theatre District</option>
+                        <option value="3">Boston University</option>
+                        <option value="4">North End</option>
+                        <option value="5">Fenway</option>
+                        <option value="6">Northeastern University</option>
+                        <option value="7">South Station</option>
+                        <option value="8">Haymarket Square</option>
+                        <option value="9">West End</option>
+                        <option value="10">Beacon Hill</option>
+                        <option value="11">North Station</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="short_summary">weather</label>
+                <br><select class="form-control" id="short_summary" name="short_summary" required="required">
+                    <option>-- Choose a Weather Condition --</option>
+                    <option value="0">Overcast</option>
+                    <option value="1">Mostly Cloudy</option>
+                    <option value="2">Party Cloudy</option>
+                    <option value="3">Clear</option>
+                    <option value="4">Light Rain</option>
+                    <option value="5">Rain</option>
+                    <option value="6">Possible Drizzle</option>
+                    <option value="7">Foggy</option>
+                    <option value="8">Drizzle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="surge_multiplier">Surge Multiplier Pricing</label>
+                <br><select class="form-control" id="surge_multiplier" name="surge_multiplier" required="required">
+                    <option>-- Choose a Surge Multiplier Pricing --</option>
+                    <option value="0">$1.00</option>
+                    <option value="1">$1.25</option>
+                    <option value="2">$1.50</option>
+                    <option value="3">$1.75</option>
+                    <option value="4">$2.00</option>
+                    <option value="5">$2.50</option>
+                    <option value="6">$3.00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distance">Distance</label>
+                <br><input type="number" name="distance" class="form-control" id="distance"
+                    placeholder="Insert Distance Range (0 - 548)" min="0" max="548" required="required">
+            </div>
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white font-weight-bold">
+                    Result of Uber/lyft Services Price Prediction
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ prediction_text }}</p>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-3 mb-5">
+                <div id="success"></div>
+                <button class="sim-btn hvr-bounce-to-top" type="submit">Predict</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
