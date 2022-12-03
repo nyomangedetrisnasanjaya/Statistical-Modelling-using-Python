@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gaya.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest</title>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Survival of Patients with Heart Failure Prediction</h1>
+        <form action="{{ url_for('heartfailureprediction') }}" method="POST">
+            <div class="form-group">
+                <label for="usia">Age</label>
+                <br><input type="number" class="form-control" name="usia" id="usia"
+                    placeholder="Insert value Age - Range (40 - 95)" required min="40" max="95">
+            </div>
+            <div class="form-group">
+                <label for="anaemia">Anaemia</label>
+                <br><select class="form-select" aria-label="Default select example" name="anaemia">
+                    <option selected>Choose for Anemia section</option>
+                    <option value="0">The patient does not have anemia</option>
+                    <option value="1">Patient has anemia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="creatinin_fosfokinase">Creatinin Fosfokinase</label>
+                <br><input type="number" class="form-control" name="creatinin_fosfokinase" id="creatinin_fosfokinase"
+                    placeholder="Insert value Creatinin Fosfokinase - Range (23 - 7861)" required min="23" max="7861">
+            </div>
+            <div class="form-group">
+                <label for="fraksi_ejeksi">Fraksi Ejeksi</label>
+                <br><select class="form-select" aria-label="Default select example" name="fraksi_ejeksi">
+                    <option selected>Choose for Ejection Fraction section</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="17">17</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="38">38</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                    <option value="60">60</option>
+                    <option value="62">62</option>
+                    <option value="65">65</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tekanan_darah_tinggi">High Blood Pressure</label>
+                <br><select class="form-select" aria-label="Default select example" name="tekanan_darah_tinggi">
+                    <option selected>Choose for the High Blood Pressure section</option>
+                    <option value="0">The patient does not have high blood pressure</option>
+                    <option value="1">The patient has high blood pressure</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="platelets">Platelets</label>
+                <br><input type="number" class="form-control" name="platelets" id="platelets"
+                    placeholder="Insert value Platelets - Range (25100 - 850000)" required min="25100" max="850000">
+            </div>
+            <div class="form-group">
+                <label for="kreatinin_serum">Kreatinin Serum</label>
+                <br><input type="number" class="form-control" name="kreatinin_serum" id="kreatinin_serum"
+                    placeholder="Insert value Kreatinin Serum - Range (0 - 10)" required min="0" max="10">
+            </div>
+            <div class="form-group">
+                <label for="sodium_serum">Sodium Serum</label>
+                <br><input type="number" class="form-control" name="sodium_serum" id="sodium_serum"
+                    placeholder="Insert value Sodium Serum - Range (113 - 148)" required min="113" max="148">
+            </div>
+            <div class="form-group">
+                <label for="time">Time</label>
+                <br><input type="number" class="form-control" name="time" id="time"
+                    placeholder="Insert value Time - Range (4 - 285)" required min="4" max="285">
+            </div>
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white font-weight-bold">
+                    Prediction Result
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ prediction_text }}</p>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-3 mb-5">
+                <div id="success"></div>
+                <button class="sim-btn hvr-bounce-to-top" type="submit">Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
