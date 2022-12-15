@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gaya.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Means Clustering</title>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Credit Card Users Clustering</h1>
+        <form action="{{ url_for('creditcardclustering') }}" method="POST">
+            <div class="form-group">
+                <label for="BALANCE">Balance</label>
+                <input type="text" class="form-control" name="BALANCE" id="BALANCE"
+                    placeholder="Insert Balance Value - Range (0 - 19043)" required>
+            </div>
+            <div class="form-group">
+                <label for="BALANCE_FREQUENCY">Balance Frequency</label>
+                <input type="text" class="form-control" name="BALANCE_FREQUENCY" id="BALANCE_FREQUENCY"
+                    placeholder="Insert Balance Frequency Value - Range (0.0 - 1.0)" required>
+            </div>
+            <div class="form-group">
+                <label for="PURCHASES">Purchases</label>
+                <input type="text" class="form-control" name="PURCHASES" id="PURCHASES"
+                    placeholder="Insert value Purchases - Range (0 - 49039)" required>
+            </div>
+            <div class="form-group">
+                <label for="ONEOFF_PURCHASES">OneOff Purchases</label>
+                <input type="text" class="form-control" name="ONEOFF_PURCHASES" id="ONEOFF_PURCHASES"
+                    placeholder="Insert value OneOff Purchases - Range (0 - 40761)" required>
+            </div>
+            <div class="form-group">
+                <label for="INSTALLMENTS_PURCHASES">Installments Purchases</label>
+                <input type="text" class="form-control" name="INSTALLMENTS_PURCHASES" id="INSTALLMENTS_PURCHASES"
+                    placeholder="Insert value Installments Purchases - Range (0 - 22500)" required>
+            </div>
+            <div class="form-group">
+                <label for="CASH_ADVANCE">Cash advance</label>
+                <input type="text" class="form-control" name="CASH_ADVANCE" id="CASH_ADVANCE"
+                    placeholder="Insert value Cash advance - Range (0 - 47137)" required>
+            </div>
+            <div class="form-group">
+                <label for="PURCHASES_FREQUENCY">Purchases Frequency</label>
+                <input type="text" class="form-control" name="PURCHASES_FREQUENCY" id="PURCHASES_FREQUENCY"
+                    placeholder="Insert value Purchases Frequency - Range (0.0 - 1.0)" required>
+            </div>
+            <div class="form-group">
+                <label for="ONEOFF_PURCHASES_FREQUENCY">OneOff Purchases Frequency</label>
+                <input type="text" class="form-control" name="ONEOFF_PURCHASES_FREQUENCY"
+                    id="ONEOFF_PURCHASES_FREQUENCY"
+                    placeholder="Insert value OneOff Purchases Frequency - Range (0.0 - 1.0)" required>
+            </div>
+            <div class="form-group">
+                <label for="PURCHASES_INSTALLMENTS_FREQUENCY">Purchases Installments Frequency</label>
+                <input type="text" class="form-control" name="PURCHASES_INSTALLMENTS_FREQUENCY"
+                    id="PURCHASES_INSTALLMENTS_FREQUENCY"
+                    placeholder="Insert value Purchases Installments Frequency - Range (0.0 - 1.0)" required>
+            </div>
+            <div class=" form-group">
+                <label for="CASH_ADVANCE_FREQUENCY">Cash Advance Frequency</label>
+                <input type="text" class="form-control" name="CASH_ADVANCE_FREQUENCY" id="CASH_ADVANCE_FREQUENCY"
+                    placeholder="Insert value Cash Advance Frequency - Range (0.0 - 1.5)" required>
+            </div>
+            <div class=" form-group">
+                <label for="CASH_ADVANCE_TRX">Cash Advance Transaction</label>
+                <input type="number" class="form-control" name="CASH_ADVANCE_TRX" id="CASH_ADVANCE_TRX"
+                    placeholder="Insert value Cash Advance Transaction - Range (0 - 123)" required min="0" max="123"
+                    value="0">
+            </div>
+            <div class="form-group">
+                <label for="PURCHASES_TRX">Purchases Transaction</label>
+                <input type="number" class="form-control" name="PURCHASES_TRX" id="PURCHASES_TRX"
+                    placeholder="Insert value Purchases Transaction - Range (0 - 358)" required min="0" max="358"
+                    value="0">
+            </div>
+            <div class="form-group">
+                <label for="CREDIT_LIMIT">Credit Limit</label>
+                <input type="text" class="form-control" name="CREDIT_LIMIT" id="CREDIT_LIMIT"
+                    placeholder="Insert Credit Limit - Range (50 - 30000)" required>
+            </div>
+            <div class="form-group">
+                <label for="PAYMENTS">Payments</label>
+                <input type="text" class="form-control" name="PAYMENTS" id="PAYMENTS"
+                    placeholder="Insert Payments - Range (0 - 50721)" required>
+            </div>
+            <div class="form-group">
+                <label for="MINIMUM_PAYMENTS">Minimum Payments</label>
+                <input type="text" class="form-control" name="MINIMUM_PAYMENTS" id="MINIMUM_PAYMENTS"
+                    placeholder="Insert Minimum Payments - Range (0 - 76406)" required>
+            </div>
+            <div class="form-group">
+                <label for="PRC_FULL_PAYMENT">Price Full Payment</label>
+                <input type="text" class="form-control" name="PRC_FULL_PAYMENT" id="PRC_FULL_PAYMENT"
+                    placeholder="Insert Price Full Payment - Range (0.0 - 1.0)" required">
+            </div>
+            <div class="form-group">
+                <label for="TENURE">Tenure</label>
+                <select class="form-select" aria-label="Default select example" name="TENURE" id="TENURE">
+                    <option selected>Choose for Tenure</option>
+                    <option value="6">6 Month</option>
+                    <option value="7">7 Month</option>
+                    <option value="8">8 Month</option>
+                    <option value="9">9 Month</option>
+                    <option value="10">10 Month</option>
+                    <option value="11">11 Month</option>
+                    <option value="12">12 Month</option>
+                </select>
+            </div>
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white font-weight-bold">
+                    Prediction Result
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ prediction_text }}</p>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-3 mb-5">
+                <div id="success"></div>
+                <button class="sim-btn hvr-bounce-to-top" type="submit">Predict</button>
+            </div>
+        </form>
+        
+    </div>
+</body>
+
+</html>
