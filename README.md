@@ -1,7 +1,7 @@
 # Statistical-Modelling-using-Python
 Python for Data Science (Studi Independen Kampus Merdeka Batch 3 by Hacktiv8) | Period: 18 Aug - 31 Dec 2022 | Self-Paced Learning, Live Session, &amp; Project 
 
-## Assignment 1: Analisis Data Kriminalitas 2008-2016 di London
+## Assignment 1: Analysis of Crime Data 2008-2016 in London
 Dataset: [London Crime Data, 2008-2016](https://www.kaggle.com/datasets/jboysen/london-crime)
 Crime in major metropolitan areas, such as London, occurs in distinct patterns from Jan 2008 - Dec 2016. This data covers the number of criminal reports by month, LSOA borough, and major/minor category.
 
@@ -16,7 +16,7 @@ A:
 - The distribution of crime counts by year shows a similar percentage to the lowest percentage of crimes occurring in 2010.
 - The sector with the highest occurrence of crimes is the City of Westminster, followed by the City of London and Kensington and Chelsea.
 
-## Assignment 2: Analisis Penjualan Properti di NYC
+## Assignment 2: Analysis of Property Sales in NYC
 Dataset: [NYC Property Sales](https://www.kaggle.com/datasets/new-york-city/nyc-property-sales)
 A year's worth of properties sold on the NYC real estate market. This dataset contains the location, address, type, sale price, and sale date of building units sold.
 
